@@ -1,0 +1,107 @@
+{
+    "name": "Make Academy - Make Basics course 3, units 2 and 4",
+    "flow": [
+        {
+            "id": 1,
+            "module": "weather:ActionGetCurrentWeather",
+            "version": 1,
+            "parameters": {},
+            "mapper": {
+                "type": "name",
+                "city": "London, UK."
+            },
+            "metadata": {
+                "designer": {
+                    "x": 0,
+                    "y": 0
+                },
+                "restore": {
+                    "expect": {
+                        "type": {
+                            "label": "cities"
+                        }
+                    }
+                },
+                "expect": [
+                    {
+                        "name": "type",
+                        "type": "select",
+                        "label": "I want to enter a location by",
+                        "required": true,
+                        "validate": {
+                            "enum": [
+                                "name",
+                                "coords"
+                            ]
+                        }
+                    },
+                    {
+                        "name": "city",
+                        "type": "text",
+                        "label": "City",
+                        "required": true
+                    }
+                ]
+            }
+        },
+        {
+            "id": 2,
+            "module": "google-sheets:addRow",
+            "version": 2,
+            "parameters": {},
+            "mapper": {},
+            "metadata": {
+                "designer": {
+                    "x": 300,
+                    "y": 0,
+                    "messages": [
+                        {
+                            "category": "setup",
+                            "severity": "error",
+                            "message": "Value must not be empty."
+                        }
+                    ]
+                },
+                "restore": {
+                    "parameters": {
+                        "__IMTCONN__": {
+                            "data": {
+                                "scoped": "undefined",
+                                "connection": "undefined"
+                            },
+                            "label": "Choose an account"
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "name": "__IMTCONN__",
+                        "type": "account:google",
+                        "label": "Connection"
+                    }
+                ]
+            }
+        }
+    ],
+    "metadata": {
+        "instant": false,
+        "version": 1,
+        "scenario": {
+            "roundtrips": 1,
+            "maxErrors": 3,
+            "autoCommit": true,
+            "autoCommitTriggerLast": true,
+            "sequential": false,
+            "slots": null,
+            "confidential": false,
+            "dataloss": false,
+            "dlq": false,
+            "freshVariables": false
+        },
+        "designer": {
+            "orphans": []
+        },
+        "zone": "eu1.make.com",
+        "notes": []
+    }
+}
